@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
+import transactionsRouter from "./transactions/routes.js";
 
 dotenv.config();
 
@@ -14,3 +15,10 @@ mongoose
   });
 
 const app = express();
+const port = 8080;
+
+app.use("/api/transactions", transactionsRouter);
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
