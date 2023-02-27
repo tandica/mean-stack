@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
 import transactionsRouter from "./transactions/routes.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ mongoose
 
 const app = express();
 const port = 8080;
+
+app.use(cors());
 
 app.use("/api/transactions", transactionsRouter);
 
