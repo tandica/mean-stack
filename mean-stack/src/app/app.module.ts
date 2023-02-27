@@ -6,14 +6,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/transactions.component';
-import {MatNativeDateModule} from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TableComponent
-  ],
+  declarations: [AppComponent, TableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,10 +22,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatPaginatorModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent, TableComponent],
-
 })
-export class AppModule { }
+export class AppModule {}

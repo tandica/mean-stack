@@ -36,6 +36,39 @@
   </mat-paginator>
 </div> -->
 
+<form class="date-block" [formGroup]="filterByDate">
+  <div class="date-block__list">
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="startDate"
+        placeholder="startDate"
+        formControlName="startDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="date-block__list">
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="endDate"
+        placeholder="endDate"
+        formControlName="endDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <button mat-button color="primary" class="primary" (click)="applyFilter()">
+    Submit
+  </button>
+</form>
+
 <div>
   <mat-table [dataSource]="transactions">
     <ng-container matColumnDef="date">
@@ -63,23 +96,23 @@
 
     <ng-container matColumnDef="amount">
       <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-      <mat-cell *matCellDef="let transaction">{{
-        transaction.amount
-      }}</mat-cell>
+      <mat-cell *matCellDef="let transaction"
+        >${{ transaction.amount }} {{ transaction.currency }}</mat-cell
+      >
     </ng-container>
 
-    <ng-container matColumnDef="currency">
+    <!-- <ng-container matColumnDef="currency">
       <mat-header-cell *matHeaderCellDef>Currency</mat-header-cell>
       <mat-cell *matCellDef="let transaction">{{
         transaction.currency
       }}</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container matColumnDef="comments">
       <mat-header-cell *matHeaderCellDef>Comments</mat-header-cell>
-      <mat-cell *matCellDef="let transaction">{{
-        transaction.comments
-      }}</mat-cell>
+      <mat-cell *matCellDef="let transaction"
+        >{{ transaction.comments }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="status">
@@ -95,7 +128,7 @@
         'sender',
         'recipient',
         'amount',
-        'currency',
+
         'comments',
 
         'status'
@@ -104,15 +137,7 @@
     <mat-row
       *matRowDef="
         let transaction;
-        columns: [
-          'date',
-          'sender',
-          'recipient',
-          'amount',
-          'currency',
-          'comments',
-          'status'
-        ]
+        columns: ['date', 'sender', 'recipient', 'amount', 'comments', 'status']
       "
     ></mat-row>
   </mat-table>
