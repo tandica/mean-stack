@@ -33,8 +33,6 @@ transactionsRouter.get(
       }
     }
 
-    console.log("*", req.query);
-
     // const insertTransactions = await Transactions.insertMany(
     //   transactionsData.transactions
     // );

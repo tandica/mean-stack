@@ -8,7 +8,7 @@ const transactionsSchema = new mongoose.Schema({
   sender: { type: senderSchema },
   recipient: { type: recipientSchema },
   amount: { type: "number" },
-  currencyCD: { type: "string" },
+  currency: { type: "string" },
   comments: { type: "string" },
   status: { type: "string" },
 });

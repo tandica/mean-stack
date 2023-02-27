@@ -7,6 +7,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/transactions.component';
 import {MatNativeDateModule} from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatTableModule,
     MatPaginatorModule,
     MatNativeDateModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent, TableComponent],
