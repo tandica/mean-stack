@@ -2,21 +2,6 @@ import mongoose from "mongoose";
 import senderSchema from "./senderModel.js";
 import recipientSchema from "./recipientModel.js";
 
-// const senderSchema = new mongoose.Schema({
-//   firstName: { type: "string" },
-//   lastName: { type: "string" },
-//   dateOfBirth: { type: "string" },
-//   IDNumber: { type: "string" },
-// });
-
-// const recipientSchema = new mongoose.Schema({
-//   firstName: { type: "string" },
-//   lastName: { type: "string" },
-//   email: { type: "string" },
-//   accountNumber: { type: "string" },
-//   bank: { type: "string" },
-// });
-
 const transactionsSchema = new mongoose.Schema({
   id: { type: "string" },
   date: { type: "number" },
