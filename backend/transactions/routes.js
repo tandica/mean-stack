@@ -103,6 +103,9 @@ transactionsRouter.put(
       transaction.recipient.email = req.body.recipient.email;
       transaction.recipient.accountNumber = req.body.recipient.accountNumber;
       transaction.recipient.bank = req.body.recipient.bank;
+      transaction.amount = req.body.amount;
+      transaction.comments = req.body.comments;
+
       transaction.status = req.body.status;
 
       await transaction.save();

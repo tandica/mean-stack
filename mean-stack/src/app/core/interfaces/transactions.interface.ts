@@ -25,3 +25,19 @@ export interface Transaction {
 export interface TransactionsResponse {
   getAllTransactions: Transaction[];
 }
+
+export interface createAndUpdateTransactions {
+  date: string;
+  sender: {
+    firstName: string;
+    lastName: string;
+  };
+  recipient: {
+    firstName: string;
+    lastName: string;
+  };
+  amount: string;
+  currency: string;
+  comments: string;
+  status: string;
+}

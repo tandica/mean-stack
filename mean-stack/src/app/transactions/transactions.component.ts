@@ -3,9 +3,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { TransactionsResponse, Transaction } from './transactions.interface';
+import {
+  TransactionsResponse,
+  Transaction,
+} from '../core/interfaces/transactions.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateTransactionComponent } from './create-transaction/create-transaction-modal.component';
 
 /**
  * @title Table with pagination
@@ -13,11 +18,12 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.css'],
+  styleUrls: ['./transactions.component.scss'],
 })
 export class TableComponent implements OnInit, AfterViewInit {
   public filterByDate: FormGroup;
   public pipe: DatePipe;
+  public dialog: MatDialog;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   transactions: Transaction[] = [];
@@ -35,7 +41,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.http
       .get<TransactionsResponse>('http://localhost:8080/api/transactions')
       .pipe(map((response) => response.getAllTransactions))
@@ -63,5 +69,16 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   applyFilter() {
     this.dataSource.filter = '' + Math.random();
+  }
+
+  openAddTransactionModal() {
+    const dialogRef = this.dialog.open(CreateTransactionComponent, {
+      width: '500px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }

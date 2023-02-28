@@ -70,6 +70,12 @@
 </form>
 
 <div>
+  <button mat-raised-button color="primary" (click)="openAddTransactionModal()">
+    Add transaction
+  </button>
+</div>
+
+<div>
   <mat-table [dataSource]="transactions">
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
@@ -122,20 +128,15 @@
       }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
-      <mat-cell *matCellDef="let transaction">View</mat-cell>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let transaction">Edit | Delete</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="view">
-      <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
-      <mat-cell *matCellDef="let transaction">Edit</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
+    <!-- <ng-container matColumnDef="delete">
       <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
       <mat-cell *matCellDef="let transaction">Delete</mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <mat-header-row
       *matHeaderRowDef="[
@@ -147,9 +148,7 @@
         'comments',
 
         'status',
-        'edit',
-        'view',
-        'delete'
+        'actions'
       ]"
     ></mat-header-row>
     <mat-row
@@ -162,9 +161,7 @@
           'amount',
           'comments',
           'status',
-          'edit',
-          'view',
-          'delete'
+          'actions'
         ]
       "
     ></mat-row>
