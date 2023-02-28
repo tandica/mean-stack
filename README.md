@@ -1,5 +1,6 @@
 # MEAN-Stack Transactions Project
 
+!['homepage'](https://github.com/tandica/mean-stack/blob/main/mean-stack/src/assets/images/homepage_meanstack.png)
 
 ## Setup
 
@@ -12,7 +13,6 @@ npm install
 cd backend
 npm start
 ```
-
 
 ### Start frontend
 
