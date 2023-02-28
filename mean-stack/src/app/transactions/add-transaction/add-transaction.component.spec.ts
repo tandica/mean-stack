@@ -29,10 +29,6 @@ describe('AddTransactionComponent', () => {
 
     fixture = TestBed.createComponent(AddTransactionComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  xit('should create', () => {
     component.transactionForm = {
       _id: '',
       date: '',
@@ -54,11 +50,14 @@ describe('AddTransactionComponent', () => {
       comments: '',
       status: '',
     };
+    fixture.detectChanges();
+  });
 
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should update heading text if isEdit is true', () => {
+  it('should update heading text if isEdit is true', () => {
     component.transactionForm = new Transaction();
 
     // Set isEdit to true
