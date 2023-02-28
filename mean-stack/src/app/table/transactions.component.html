@@ -122,6 +122,21 @@
       }}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+      <mat-cell *matCellDef="let transaction">View</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+      <mat-cell *matCellDef="let transaction">Edit</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+      <mat-cell *matCellDef="let transaction">Delete</mat-cell>
+    </ng-container>
+
     <mat-header-row
       *matHeaderRowDef="[
         'date',
@@ -131,13 +146,26 @@
 
         'comments',
 
-        'status'
+        'status',
+        'edit',
+        'view',
+        'delete'
       ]"
     ></mat-header-row>
     <mat-row
       *matRowDef="
         let transaction;
-        columns: ['date', 'sender', 'recipient', 'amount', 'comments', 'status']
+        columns: [
+          'date',
+          'sender',
+          'recipient',
+          'amount',
+          'comments',
+          'status',
+          'edit',
+          'view',
+          'delete'
+        ]
       "
     ></mat-row>
   </mat-table>
