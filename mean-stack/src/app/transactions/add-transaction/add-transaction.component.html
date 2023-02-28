@@ -1,0 +1,198 @@
+<div class="container-fluid p-4 w-100 overflow-auto">
+  <div class="row">
+    <h4 class="text-center mb-3" id="page-heading">
+      {{ isEdit ? "Edit Transaction" : "Add Transaction" }}
+    </h4>
+  </div>
+  <form #tForm="ngForm" *ngIf="transactionForm">
+    <div class="row">
+      <h6 class="px-0">Sender Details</h6>
+      <hr />
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First Name"
+            name="firstName"
+            [(ngModel)]="transactionForm?.sender.firstName"
+            required
+          />
+          <mat-error>First name is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Last Name"
+            name="lastName"
+            [(ngModel)]="transactionForm?.sender.lastName"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>ID</mat-label>
+          <input
+            matInput
+            name="IDNumber"
+            placeholder="ID Number"
+            [(ngModel)]="transactionForm?.sender.IDNumber"
+            required
+          />
+          <mat-error>ID Number is required</mat-error>
+
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            name="dateOfBirth"
+            [(ngModel)]="transactionForm?.sender.dateOfBirth"
+            required
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Date is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <h6 class="px-0">Recipient Details</h6>
+      <hr />
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            name="re-firstName"
+            placeholder="Add recipient First Name"
+            [(ngModel)]="transactionForm?.recipient.firstName"
+            required
+          />
+          <mat-error>First name is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            name="re-lastName"
+            placeholder="Add recipient Last Name"
+            [(ngModel)]="transactionForm?.recipient.lastName"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            name="email"
+            matInput
+            placeholder="Add recipient email"
+            [(ngModel)]="transactionForm?.recipient.email"
+            required
+          />
+          <mat-error>Recipient email is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Bank Name</mat-label>
+          <input
+            matInput
+            name="bank"
+            placeholder="Add recipient bank name"
+            [(ngModel)]="transactionForm?.recipient.bank"
+            required
+          />
+          <mat-error>Bank name is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Account No.</mat-label>
+          <input
+            matInput
+            name="accountNumber"
+            placeholder="Add recipient account number"
+            [(ngModel)]="transactionForm?.recipient.accountNumber"
+            required
+          />
+          <mat-error>Account Number is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <h6 class="px-0">Transaction Details</h6>
+      <hr />
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Amount</mat-label>
+          <input
+            matInput
+            name="amount"
+            type="number"
+            placeholder="Enter amount to be sent"
+            [(ngModel)]="transactionForm.amount"
+            required
+          />
+          <mat-error>Amount is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Currency</mat-label>
+          <input
+            matInput
+            type="text"
+            name="currency"
+            placeholder="Enter Currency"
+            [(ngModel)]="transactionForm.currency"
+            required
+          />
+          <mat-error>Currency is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>status </mat-label>
+          <input
+            matInput
+            name="status"
+            placeholder="IN PROGRESS, COPMLETE, REJECTED, PENDING"
+            [(ngModel)]="transactionForm.status"
+            required
+          />
+          <mat-error>Status is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Comments (optional)</mat-label>
+          <input
+            matInput
+            name="comments"
+            placeholder="Add any comments"
+            [(ngModel)]="transactionForm.comments"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <button mat-raised-button (click)="handleSubmit()" color="primary" [disabled]="tForm.invalid">
+        {{ isEdit ? "Update" : "Send" }}
+      </button>
+    </div>
+  </form>
+</div>

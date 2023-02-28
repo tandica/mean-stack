@@ -3,10 +3,65 @@
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
-  padding: 30px;
+  padding: 0;
 }
 
 html,
 body {
   height: 100%;
+}
+.content {
+  padding: 30px;
+}
+
+.mat-mdc-text-field-wrapper,
+.mat-mdc-form-field-infix {
+  height: 40px !important;
+  max-height: 40px !important;
+}
+.mat-mdc-text-field-wrapper{
+  background: #ffffff !important;
+}
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix,
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-block: 8px !important;
+}
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  padding-left: 0 !important;
+}
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input,
+.mat-mdc-select-value {
+  font-size: 15px !important;
+}
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+  font-size: 14px !important;
+}
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-floating-label {
+  padding-bottom: 16px;
+}
+.mat-mdc-form-field-error {
+  font-size: 11px !important;
+  position: relative !important;
+  bottom: 4px !important;
+}
+.mat-mdc-option .mdc-list-item__primary-text {
+  font-size: 14px !important;
+  line-height: 16px !important;
+}
+.mat-mdc-option {
+  max-height: 40px !important;
+  min-height: 40px !important;
+}
+.mat-mdc-icon-button.mat-mdc-button-base  {
+  margin-bottom: 10px !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0px !important;
+}
+
+.mat-mdc-form-field-icon-suffix>.mat-icon {
+  width: 40px !important;
+  height: 37px !important;
+  padding: 0px !important;
 }
