@@ -4,7 +4,6 @@ import expressAsyncHandler from "express-async-handler";
 
 const transactionsRouter = express.Router();
 
-
 transactionsRouter.get(
   "/filter",
   expressAsyncHandler(async (req, res) => {
@@ -15,13 +14,17 @@ transactionsRouter.get(
     const searchQuery = req.query.search;
 
     // Get start and end dates from filter (if present)
-    const startDate = req.query.startDate ? new Date(req.query.startDate).setHours(0,0,0,0) : null;
-    const endDate = req.query.endDate ? new Date(req.query.endDate).setHours(23,59,59,59) : null;
+    const startDate = req.query.startDate
+      ? new Date(req.query.startDate).setHours(0, 0, 0, 0)
+      : null;
+    const endDate = req.query.endDate
+      ? new Date(req.query.endDate).setHours(23, 59, 59, 59)
+      : null;
 
     // Build filter object based on search query and/or dates
     const filter = {};
     if (searchQuery) {
-      filter.status =  searchQuery;
+      filter.status = searchQuery;
     }
     if (startDate && endDate) {
       filter.date = { $gte: startDate, $lte: endDate };
@@ -31,14 +34,16 @@ transactionsRouter.get(
       filter.date = { $lte: endDate };
     }
 
-    const totalCount = await Transactions.countDocuments(filter)
+    const totalCount = await Transactions.countDocuments(filter);
     // Find data based on filter using Mongoose
-    const data = await Transactions.find(filter).skip(skip).limit(pageSize).then((getAllTransactions) => {
-      return res.status(200).json({ getAllTransactions, totalCount });
-    });
+    const data = await Transactions.find(filter)
+      .skip(skip)
+      .limit(pageSize)
+      .then((getAllTransactions) => {
+        return res.status(200).json({ getAllTransactions, totalCount });
+      });
   })
 );
-
 
 //get all transactions
 transactionsRouter.get(
@@ -82,7 +87,6 @@ transactionsRouter.post(
 );
 
 //edit transaction
-//should user be able to update accountNumber or IDNumber?
 transactionsRouter.put(
   "/:id",
   expressAsyncHandler(async (req, res) => {
